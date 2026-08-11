@@ -128,7 +128,7 @@ export default function Footer() {
             </div>
 
             {/* Contact Us Column */}
-            <div className="footer-col">
+            <div className="footer-col footer-contact-col">
               <h4>Contact us</h4>
               <div className="footer-contact-details">
                 <div className="footer-contact-item">
@@ -151,7 +151,7 @@ export default function Footer() {
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
-                  <span>1st floor of tek star park pashhupjya plaza 2nd floor office no:1, Vijay nagar, Patna</span>
+                  <span>1st floor of tek star park, Pashhupjya plaza 2nd floor, Office No. 1, Vijay nagar, Patna</span>
                 </div>
               </div>
             </div>
