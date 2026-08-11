@@ -30,14 +30,11 @@ export default function Navbar() {
         
         {/* Logo Area */}
         <div className="custom-logo-area">
-          <motion.div
-           
-            className="w-full h-full"
-          >
+          <div className="w-full h-full">
             <Link to="/" className="custom-logo-brand">
               <img src={logo} alt="SHRI InfoTech" className="custom-logo-img" />
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Red Navbar Area */}
@@ -76,27 +73,12 @@ export default function Navbar() {
           </ul>
 
           {/* Project Button */}
-          <Magnet strength={0.3}>
-            <BorderGlow
-              className="ml-auto cursor-pointer"
-              edgeSensitivity={30}
-              glowColor="40 80 80"
-              backgroundColor="#ffffff"
-              borderRadius={30}
-              glowRadius={25}
-              glowIntensity={1}
-              coneSpread={25}
-              animated={true}
-              colors={['#c084fc', '#f472b6', '#38bdf8']}
-            >
-              <a
-                href={getNavLink("#projects")}
-                className="inline-block px-7 py-2.5 text-[#9d0d12] font-semibold text-[14.5px] no-underline leading-none"
-              >
-                Projects
-              </a>
-            </BorderGlow>
-          </Magnet>
+          <a
+            href={getNavLink("#projects")}
+            className="navbar-projects-btn ml-auto inline-block px-7 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
+          >
+            Projects
+          </a>
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -146,26 +128,13 @@ export default function Navbar() {
                 </li>
               ))}
               <li className="pt-2">
-                <BorderGlow
-                  className="w-full cursor-pointer"
-                  edgeSensitivity={30}
-                  glowColor="40 80 80"
-                  backgroundColor="#ffffff"
-                  borderRadius={30}
-                  glowRadius={25}
-                  glowIntensity={1}
-                  coneSpread={25}
-                  animated={true}
-                  colors={['#c084fc', '#f472b6', '#38bdf8']}
+                <a
+                  href={getNavLink("#projects")}
+                  onClick={() => setIsOpen(false)}
+                  className="navbar-projects-btn block text-center px-6 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
                 >
-                  <a
-                    href={getNavLink("#projects")}
-                    onClick={() => setIsOpen(false)}
-                    className="block text-center px-6 py-2.5 text-[#9d0d12] font-semibold text-[14.5px] no-underline leading-none"
-                  >
-                    Projects
-                  </a>
-                </BorderGlow>
+                  Projects
+                </a>
               </li>
             </ul>
           </motion.div>

@@ -14,10 +14,32 @@
 }
 
 /* ── Container ── */
+/* ── Container & Global Containment ── */
+.sdp-page-wrapper,
+.sdp-hero,
+.sdp-overview-section,
+.sdp-features-section,
+.sdp-casestudies-section,
+.sdp-estimator-section,
+.sdp-tech-section,
+.sdp-process-section,
+.sdp-comparison-section,
+.sdp-testimonials-section,
+.sdp-pricing-section,
+.sdp-faq-section,
+.sdp-cyber-cta {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
 .sdp-container {
   max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
 
 /* ── Common Section Header ── */
@@ -41,6 +63,8 @@
   color: #1a1a2e;
   letter-spacing: -0.025em;
   margin: 0 0 12px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ==========================================================================
@@ -57,6 +81,7 @@
   overflow: hidden;
   background: linear-gradient(135deg, #fff7f6 0%, #fef2f2 40%, #f8edf5 75%, #fff5f5 100%);
   box-sizing: border-box;
+  width: 100%;
 }
 
 .sdp-hero-bg-canvas {
@@ -113,17 +138,30 @@
   grid-template-columns: 1.15fr 0.85fr;
   gap: 40px;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.sdp-hero-content {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .sdp-hero-pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: 20px;
   background: rgba(157, 13, 18, 0.06);
   border: 1px solid rgba(157, 13, 18, 0.18);
   margin-bottom: 16px;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .sdp-hero-pill-badge .pulse-dot {
@@ -132,6 +170,7 @@
   border-radius: 50%;
   box-shadow: 0 0 12px #9d0d12;
   animation: pulse-dot 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse-dot {
@@ -140,40 +179,55 @@
 }
 
 .sdp-hero-pill-badge .pill-text {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: #9d0d12;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .sdp-hero-title {
-  font-size: 3rem;
+  font-size: clamp(1.3rem, 4vw, 3rem);
   font-weight: 850;
-  line-height: 1.1;
+  line-height: 1.18;
   color: #1a1a2e;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin: 0 0 12px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-hero-tagline {
-  font-size: 1.08rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.08rem);
   line-height: 1.6;
   color: #555555;
   margin-bottom: 20px;
   max-width: 580px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 /* KPI Stats Bar */
 .sdp-hero-kpi-bar {
-  display: flex;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 16px;
   margin-bottom: 22px;
-  padding: 12px 20px;
+  padding: 14px 18px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(157, 13, 18, 0.12);
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .kpi-item {
@@ -198,6 +252,9 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-btn-primary {
@@ -229,8 +286,15 @@
 }
 
 .sdp-btn-outline:hover {
-  background: #1a1a2e;
+  background: rgba(26, 26, 46, 0.06);
+  color: #1a1a2e;
+  border-color: #1a1a2e;
+}
+
+.sdp-cyber-cta .sdp-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
+  border-color: #ffffff;
 }
 
 /* ==========================================================================
@@ -238,6 +302,8 @@
    ========================================================================== */
 .sdp-hero-ide-container {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-hero-ide-window {
@@ -247,6 +313,9 @@
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 40px rgba(157, 13, 18, 0.08);
   overflow: hidden;
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-ide-header {
@@ -256,11 +325,16 @@
   padding: 12px 16px;
   background: #11172a;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  gap: 12px;
 }
 
 .sdp-ide-controls {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .sdp-ide-controls .dot {
@@ -276,6 +350,9 @@
 .sdp-ide-tabs {
   display: flex;
   gap: 4px;
+  overflow-x: auto;
+  flex-shrink: 0;
+  max-width: 100%;
 }
 
 .sdp-ide-tab {
@@ -290,6 +367,8 @@
   font-size: 11.5px;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .sdp-ide-tab.active {
@@ -305,6 +384,7 @@
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
 .sdp-ide-badge .live-pulse {
@@ -317,17 +397,29 @@
   padding: 20px;
   min-height: 200px;
   background: #030712;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-code-block {
   margin: 0;
   font-size: 12.5px;
   line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .sdp-code-line {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .sdp-code-line .line-num {
@@ -335,10 +427,16 @@
   user-select: none;
   width: 18px;
   text-align: right;
+  flex-shrink: 0;
 }
 
 .sdp-code-line .line-text {
   color: #f1f5f9;
+  min-width: 0;
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
 
 .sdp-ide-footer {
@@ -377,6 +475,9 @@
   padding: 56px 48px;
   border: 1px solid rgba(157, 13, 18, 0.08);
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .overview-badge {
@@ -387,13 +488,17 @@
   font-weight: 800;
   letter-spacing: 1.5px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .sdp-overview-card h2 {
-  font-size: 2.2rem;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
   font-weight: 850;
   color: #1a1a2e;
   margin: 0 0 20px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .sdp-overview-card p {
@@ -401,6 +506,8 @@
   line-height: 1.85;
   color: #555555;
   margin-bottom: 40px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .sdp-overview-highlights {
@@ -1287,9 +1394,11 @@
 /* ==========================================================================
    RESPONSIVE DESIGN (MOBILE & TABLET)
    ========================================================================== */
+
+/* ── TABLET (max 1024px) ── */
 @media (max-width: 1024px) {
   :root {
-    --sdp-section-padding: 56px 0;
+    --sdp-section-padding: 52px 0;
     --sdp-section-header-mb: 32px;
   }
 
@@ -1297,12 +1406,19 @@
     height: auto;
     min-height: unset;
     max-height: unset;
-    padding: 32px 0 28px;
+    padding: 36px 0 28px;
   }
 
   .sdp-hero-container {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 28px;
+  }
+
+  .sdp-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .sdp-hero-tagline {
@@ -1312,6 +1428,8 @@
 
   .sdp-hero-kpi-bar {
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .sdp-hero-actions {
@@ -1334,30 +1452,380 @@
   }
 }
 
+/* ── SMALL TABLET / LARGE PHONE (max 768px) ── */
 @media (max-width: 768px) {
   :root {
-    --sdp-section-padding: 44px 0;
-    --sdp-section-header-mb: 28px;
+    --sdp-section-padding: 36px 0;
+    --sdp-section-header-mb: 24px;
+  }
+
+  /* Hide decorative orbs that can cause overflow */
+  .sdp-glow-orb.orb-1,
+  .sdp-glow-orb.orb-2 {
+    display: none !important;
+  }
+
+  .sdp-cyber-particle {
+    display: none !important;
+  }
+
+  .sdp-container {
+    padding: 0 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .sdp-hero-title {
-    font-size: 2.3rem;
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .sdp-hero-tagline {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .sdp-hero-pill-badge {
+    padding: 5px 10px !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .sdp-hero-pill-badge .pill-text {
+    font-size: 9px !important;
+    letter-spacing: 0.3px !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    text-align: center !important;
+  }
+
+  .sdp-hero-kpi-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .kpi-item {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .kpi-val {
+    font-size: 1.15rem !important;
+  }
+
+  .kpi-lbl {
+    font-size: 9px !important;
+    letter-spacing: 0 !important;
+  }
+
+  .sdp-hero-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-btn-primary,
+  .sdp-btn-outline {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center !important;
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-hero-ide-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-hero-ide-window {
+    border-radius: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-ide-header {
+    padding: 8px 10px !important;
+    gap: 6px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+  }
+
+  .sdp-ide-tab {
+    padding: 4px 8px !important;
+    font-size: 10px !important;
+  }
+
+  .sdp-ide-body {
+    padding: 12px 10px !important;
+    min-height: 160px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+  }
+
+  .sdp-code-block {
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-code-line {
+    display: flex !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-code-line .line-text {
+    min-width: 0 !important;
+    flex: 1 !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .sdp-ide-footer {
+    padding: 8px 10px !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 
   .sdp-features-grid,
   .sdp-pricing-grid-v2,
   .sdp-testimonials-grid,
   .sdp-casestudies-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .sdp-est-grid-types,
   .sdp-est-addons-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .sdp-estimator-card,
   .sdp-overview-card {
-    padding: 28px 20px;
+    padding: 20px 14px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-comparison-table-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin: 0 -16px !important;
+    padding: 0 16px !important;
+    width: calc(100% + 32px) !important;
+    max-width: calc(100% + 32px) !important;
+    box-sizing: border-box !important;
+  }
+
+  .sdp-comparison-table {
+    min-width: 540px !important;
+  }
+
+  /* Process Section */
+  .sdp-process-step-v2 {
+    padding: 18px 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* CTA */
+  .sdp-cyber-cta-content h2 {
+    font-size: 1.4rem !important;
+  }
+
+  .sdp-cyber-cta-content p {
+    font-size: 0.92rem !important;
+    margin-bottom: 24px !important;
+  }
+
+  .cta-actions-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+
+  /* FAQ */
+  .sdp-faq-search-box input {
+    padding: 14px 16px 14px 44px !important;
+    font-size: 13px !important;
+  }
+
+  .sdp-faq-question {
+    padding: 16px 18px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .sdp-faq-answer p {
+    padding: 0 18px 16px !important;
+    font-size: 0.88rem !important;
+  }
+
+  /* Estimator */
+  .sdp-estimator-header h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .result-price .price-val {
+    font-size: 1.9rem !important;
+  }
+}
+
+/* ── PHONE (max 480px) ── */
+@media (max-width: 480px) {
+  .sdp-container {
+    padding: 0 10px !important;
+  }
+
+  .sdp-hero {
+    padding: 20px 0 16px !important;
+  }
+
+  .sdp-hero-title {
+    font-size: 1.3rem !important;
+  }
+
+  .sdp-section-header h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .sdp-hero-pill-badge .pill-text {
+    font-size: 8px !important;
+  }
+
+  .sdp-hero-kpi-bar {
+    gap: 6px !important;
+    padding: 10px 6px !important;
+  }
+
+  .kpi-val {
+    font-size: 1rem !important;
+  }
+
+  .kpi-lbl {
+    font-size: 8px !important;
+  }
+
+  .sdp-btn-primary,
+  .sdp-btn-outline {
+    padding: 10px 12px !important;
+    font-size: 12.5px !important;
+  }
+
+  .sdp-code-block {
+    font-size: 9px !important;
+    line-height: 1.4 !important;
+  }
+
+  .sdp-process-step-v2 {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 14px 10px !important;
+    gap: 8px !important;
+  }
+
+  .sdp-estimator-card {
+    padding: 12px 8px !important;
+  }
+
+  .sdp-est-result-box {
+    padding: 12px 8px !important;
+  }
+
+  .result-price .price-val {
+    font-size: 1.65rem !important;
+  }
+
+  .sdp-overview-card h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .sdp-overview-card p {
+    font-size: 0.85rem !important;
+  }
+
+  .sdp-cyber-cta-content h2 {
+    font-size: 1.2rem !important;
   }
 }

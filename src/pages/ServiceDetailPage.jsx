@@ -378,16 +378,9 @@ function FeatureCard3D({ feature, idx, accentColor }) {
         <span className="sdp-feature-num" style={{ color: accentColor }}>
           0{idx + 1}
         </span>
-        <span className="sdp-feature-badge">PRO MATRIX</span>
       </div>
       <h3>{feature.title}</h3>
       <p>{feature.desc}</p>
-
-      <div className="sdp-feature-footer">
-        <span className="sdp-feature-link" style={{ color: accentColor }}>
-          Explore Architectural Detail <ArrowRight size={14} />
-        </span>
-      </div>
     </motion.div>
   )
 }
@@ -477,7 +470,6 @@ function ClientTestimonialsSection({ accentColor }) {
       name: 'Rajesh Sharma',
       role: 'CTO, FinTech Global Pay',
       rating: 5,
-      metric: '+380% Conversions',
     },
     {
       quote:
@@ -485,7 +477,6 @@ function ClientTestimonialsSection({ accentColor }) {
       name: 'Ananya Verma',
       role: 'VP of Product, OmniScale Global',
       rating: 5,
-      metric: '0.2s LCP Speed',
     },
     {
       quote:
@@ -493,12 +484,11 @@ function ClientTestimonialsSection({ accentColor }) {
       name: 'Vikramaditya Roy',
       role: 'Founder & CEO, CloudNest Tech',
       rating: 5,
-      metric: '99.99% Uptime',
     },
   ]
 
   return (
-    <section className="sdp-testimonials-section">
+    <section className="sdp-testimonials-section" id="reviews">
       <div className="sdp-container">
         <div className="sdp-section-header">
           <span className="sdp-section-label" style={{ color: accentColor }}>
@@ -524,9 +514,6 @@ function ClientTestimonialsSection({ accentColor }) {
                     <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
                   ))}
                 </div>
-                <span className="testi-metric-badge" style={{ background: `${accentColor}25`, color: accentColor }}>
-                  {rev.metric}
-                </span>
               </div>
               <p className="testi-quote">"{rev.quote}"</p>
               <div className="testi-author">
@@ -946,7 +933,7 @@ export default function ServiceDetailPage() {
               <motion.a
                 href="#pricing"
                 className="sdp-btn-outline"
-                whileHover={{ scale: 1.04, background: 'rgba(255,255,255,0.15)' }}
+                whileHover={{ scale: 1.04, background: 'rgba(26, 26, 46, 0.06)' }}
                 whileTap={{ scale: 0.96 }}
               >
                 View Plans & Pricing

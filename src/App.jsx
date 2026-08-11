@@ -5,6 +5,7 @@ import './App.css'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 import TechnologyHeroSection from './components/TechnologyHeroSection'
 import logo from './assets/logo.jpeg'
+import whiteLogo from './assets/white-logo.png'
 import bannerVideo from './assets/bannervedio.mp4'
 import aboutImage from './assets/about_meeting.png'
 import BorderGlow from './components/BorderGlow'
@@ -170,17 +171,7 @@ const stats = [
       </svg>
     )
   },
-  {
-    id: 'experience',
-    value: '5+',
-    label: 'Years of Experience',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-      </svg>
-    )
-  },
+
   {
     id: 'support',
     value: '24/7',
@@ -326,15 +317,12 @@ function HomePage() {
           
           {/* Logo Area */}
           <div className="custom-logo-area">
-            <motion.a
+            <a
               href="#"
               className="custom-logo-brand"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               <img src={logo} alt="SHRI InfoTech" className="custom-logo-img" />
-            </motion.a>
+            </a>
           </div>
 
           {/* Red Navbar Area */}
@@ -370,27 +358,12 @@ function HomePage() {
             </ul>
 
             {/* Project Button */}
-            <Magnet strength={0.3}>
-              <BorderGlow
-                className="ml-auto cursor-pointer"
-                edgeSensitivity={30}
-                glowColor="40 80 80"
-                backgroundColor="#ffffff"
-                borderRadius={30}
-                glowRadius={25}
-                glowIntensity={1}
-                coneSpread={25}
-                animated={true}
-                colors={['#c084fc', '#f472b6', '#38bdf8']}
-              >
-                <a
-                  href="#projects"
-                  className="inline-block px-7 py-2.5 text-[#9d0d12] font-semibold text-[14.5px] no-underline leading-none"
-                >
-                  Projects
-                </a>
-              </BorderGlow>
-            </Magnet>
+            <a
+              href="#projects"
+              className="navbar-projects-btn ml-auto inline-block px-7 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
+            >
+              Projects
+            </a>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -437,26 +410,13 @@ function HomePage() {
                   </li>
                 ))}
                 <li className="pt-2">
-                  <BorderGlow
-                    className="w-full cursor-pointer"
-                    edgeSensitivity={30}
-                    glowColor="40 80 80"
-                    backgroundColor="#ffffff"
-                    borderRadius={30}
-                    glowRadius={25}
-                    glowIntensity={1}
-                    coneSpread={25}
-                    animated={true}
-                    colors={['#c084fc', '#f472b6', '#38bdf8']}
+                  <a
+                    href="#projects"
+                    onClick={() => setIsOpen(false)}
+                    className="navbar-projects-btn block text-center px-6 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
                   >
-                    <a
-                      href="#projects"
-                      onClick={() => setIsOpen(false)}
-                      className="block text-center px-6 py-2.5 text-[#9d0d12] font-semibold text-[14.5px] no-underline leading-none"
-                    >
-                      Projects
-                    </a>
-                  </BorderGlow>
+                    Projects
+                  </a>
                 </li>
               </ul>
             </motion.div>
@@ -562,7 +522,7 @@ function HomePage() {
             {projects.map((project, index) => (
               <ScrollReveal key={project.id} variant="fade-up" delay={index * 0.15}>
                 <TiltCard maxTilt={6} glowColor="rgba(0, 0, 0, 0.08)">
-                  <div className="project-card" id={`project-${project.id}`}>
+                  <div className="project-card cursor-pointer" id={`project-${project.id}`}>
                     <div className="project-image overflow-hidden">
                       <img src={project.image} alt={project.title} className="transition-transform duration-500 hover:scale-105" />
                     </div>
@@ -742,15 +702,12 @@ function HomePage() {
                     <textarea placeholder="About Your Project" rows="5" required></textarea>
                   </div>
 
-                  <Magnet strength={0.25}>
-                    <motion.button
-                      whileTap={{ scale: 0.96 }}
+                  <button
                       type="submit"
-                      className="submit-btn cursor-pointer"
+                      className="submit-btn hero-btn-sweep-primary relative overflow-hidden cursor-pointer"
                     >
-                      SUBMIT
-                    </motion.button>
-                  </Magnet>
+                      <span className="relative z-10">SUBMIT</span>
+                    </button>
                 </form>
               </div>
             </ScrollReveal>
@@ -767,47 +724,60 @@ function HomePage() {
             <div className="footer-grid">
               {/* Brand / Logo Column */}
               <div className="footer-brand-col">
-                <Link to="/" className="footer-logo no-underline inline-block">
-                  <img src={logo} alt="Shri InfoTech" className="footer-logo-img" />
+              <Link to="/" className="footer-logo no-underline inline-block hover:opacity-95 transition-opacity">
+                  <img src={whiteLogo} alt="Shri InfoTech" className="h-20 w-auto object-contain block border-0" />
                 </Link>
                 <p className="footer-desc">
                   Empowering organizations with innovative IT solutions that streamline operations and drive growth.
                 </p>
                 <div className="footer-socials">
-                  {['facebook', 'linkedin', 'twitter', 'instagram'].map((social, idx) => (
-                    <motion.a
-                      key={idx}
-                      href="#"
-                      className="social-icon"
-                      whileHover={{ scale: 1.15, rotate: idx % 2 === 0 ? 8 : -8 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      {idx === 0 && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                        </svg>
-                      )}
-                      {idx === 1 && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                          <rect x="2" y="9" width="4" height="12" />
-                          <circle cx="4" cy="4" r="2" />
-                        </svg>
-                      )}
-                      {idx === 2 && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                        </svg>
-                      )}
-                      {idx === 3 && (
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                        </svg>
-                      )}
-                    </motion.a>
-                  ))}
+                  {/* LinkedIn */}
+                  <motion.a
+                    href="https://www.linkedin.com/company/shri-infotech-it-solution/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="social-icon"
+                    whileHover={{ scale: 1.12 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg viewBox="0 0 36 36">
+                      <circle cx="18" cy="18" r="18" fill="#0A66C2" />
+                      <g transform="translate(6, 6)">
+                        <path
+                          fill="#FFFFFF"
+                          d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"
+                        />
+                      </g>
+                    </svg>
+                  </motion.a>
+
+                  {/* Instagram */}
+                  <motion.a
+                    href="https://www.instagram.com/official_shriinfotech?igsh=MTk4eGhkcDN6YXBrcA=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="social-icon"
+                    whileHover={{ scale: 1.12 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg viewBox="0 0 36 36">
+                      <defs>
+                        <radialGradient id="instaGradFooterApp" cx="30%" cy="107%" r="150%">
+                          <stop offset="0%" stopColor="#fdf497" />
+                          <stop offset="5%" stopColor="#fdf497" />
+                          <stop offset="45%" stopColor="#fd5949" />
+                          <stop offset="60%" stopColor="#d6249f" />
+                          <stop offset="90%" stopColor="#285AEB" />
+                        </radialGradient>
+                      </defs>
+                      <rect width="36" height="36" rx="18" fill="url(#instaGradFooterApp)" />
+                      <rect x="9.5" y="9.5" width="17" height="17" rx="4.5" fill="none" stroke="#FFFFFF" strokeWidth="2" />
+                      <circle cx="18" cy="18" r="4.2" fill="none" stroke="#FFFFFF" strokeWidth="2" />
+                      <circle cx="22.3" cy="13.7" r="1.1" fill="#FFFFFF" />
+                    </svg>
+                  </motion.a>
                 </div>
               </div>
 
@@ -817,7 +787,6 @@ function HomePage() {
                 <div className="footer-links">
                   <a href="#services">Services</a>
                   <a href="#contact">Contact</a>
-                  <a href="#solutions">Solutions</a>
                 </div>
               </div>
 
@@ -838,8 +807,8 @@ function HomePage() {
               <div className="footer-col">
                 <h4>Support</h4>
                 <div className="footer-links">
-                  <a href="#">Help Center</a>
-                  <a href="#">Feedback</a>
+                  <a href="#contact">Help Center</a>
+                  <a href="#reviews">Review</a>
                 </div>
               </div>
 
