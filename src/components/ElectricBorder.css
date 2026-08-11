@@ -1,0 +1,49 @@
+.electric-border {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--electric-border-radius);
+}
+
+.electric-border__canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.electric-border__glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.electric-border__glow--soft {
+  border: 1px solid color-mix(in srgb, var(--electric-border-color) 45%, transparent);
+  filter: blur(1px);
+}
+
+.electric-border__glow--bright {
+  border: 1px solid var(--electric-border-color);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--electric-border-color) 42%, transparent);
+  filter: blur(4px);
+  opacity: 0.75;
+}
+
+.electric-border__content {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .electric-border__canvas {
+    display: none;
+  }
+}

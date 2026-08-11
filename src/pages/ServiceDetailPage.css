@@ -1,0 +1,1363 @@
+/* ==========================================================================
+   SERVICE DETAIL PAGE — LIGHT THEME (MATCHING HOME PAGE AESTHETICS)
+   ========================================================================== */
+
+/* ── Custom Variables & Aesthetics ── */
+:root {
+  --sdp-bg-dark: #f8fafc;
+  --sdp-card-dark: #ffffff;
+  --sdp-card-border: rgba(157, 13, 18, 0.08);
+  --sdp-text-muted: #555555;
+  --sdp-accent-red: #9d0d12;
+  --sdp-section-padding: 72px 0;
+  --sdp-section-header-mb: 40px;
+}
+
+/* ── Container ── */
+.sdp-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Common Section Header ── */
+.sdp-section-header {
+  text-align: center;
+  margin-bottom: var(--sdp-section-header-mb);
+}
+
+.sdp-section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sdp-section-header h2 {
+  font-size: 2.4rem;
+  font-weight: 850;
+  color: #1a1a2e;
+  letter-spacing: -0.025em;
+  margin: 0 0 12px;
+}
+
+/* ==========================================================================
+   1. HERO SECTION & CYBER CANVAS
+   ========================================================================== */
+.sdp-hero {
+  position: relative;
+  height: calc(100vh - 90px);
+  min-height: 540px;
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff7f6 0%, #fef2f2 40%, #f8edf5 75%, #fff5f5 100%);
+  box-sizing: border-box;
+}
+
+.sdp-hero-bg-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Cyber Grid Effect */
+.sdp-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, rgba(157, 13, 18, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(157, 13, 18, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 25%, transparent 75%);
+}
+
+.sdp-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.sdp-glow-orb.orb-1 {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  right: -60px;
+}
+
+.sdp-glow-orb.orb-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -90px;
+  left: -90px;
+}
+
+.sdp-cyber-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+}
+
+/* 2-Column Layout */
+.sdp-hero-container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.sdp-hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(157, 13, 18, 0.06);
+  border: 1px solid rgba(157, 13, 18, 0.18);
+  margin-bottom: 16px;
+}
+
+.sdp-hero-pill-badge .pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #9d0d12;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.sdp-hero-pill-badge .pill-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #9d0d12;
+}
+
+.sdp-hero-title {
+  font-size: 3rem;
+  font-weight: 850;
+  line-height: 1.1;
+  color: #1a1a2e;
+  letter-spacing: -0.03em;
+  margin: 0 0 12px;
+}
+
+.sdp-hero-tagline {
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: #555555;
+  margin-bottom: 20px;
+  max-width: 580px;
+}
+
+/* KPI Stats Bar */
+.sdp-hero-kpi-bar {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 22px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(157, 13, 18, 0.12);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.kpi-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-val {
+  font-size: 1.4rem;
+  font-weight: 850;
+}
+
+.kpi-lbl {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #666666;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.sdp-hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sdp-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(157, 13, 18, 0.3);
+}
+
+.sdp-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: 1.5px solid #1a1a2e;
+  background: transparent;
+  color: #1a1a2e;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sdp-btn-outline:hover {
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   2. INTERACTIVE CODE IDE SANDBOX (HERO RIGHT)
+   ========================================================================== */
+.sdp-hero-ide-container {
+  width: 100%;
+}
+
+.sdp-hero-ide-window {
+  background: #090d1a;
+  border-radius: 18px;
+  border: 1px solid rgba(157, 13, 18, 0.2);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 40px rgba(157, 13, 18, 0.08);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.sdp-ide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #11172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sdp-ide-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.sdp-ide-controls .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sdp-ide-controls .red { background: #f43f5e; }
+.sdp-ide-controls .yellow { background: #f59e0b; }
+.sdp-ide-controls .green { background: #10b981; }
+
+.sdp-ide-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.sdp-ide-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 11.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sdp-ide-tab.active {
+  background: #030712;
+  color: #ff4d5a;
+}
+
+.sdp-ide-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.sdp-ide-badge .live-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.sdp-ide-body {
+  padding: 20px;
+  min-height: 200px;
+  background: #030712;
+}
+
+.sdp-code-block {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+.sdp-code-line {
+  display: flex;
+  gap: 16px;
+}
+
+.sdp-code-line .line-num {
+  color: #475569;
+  user-select: none;
+  width: 18px;
+  text-align: right;
+}
+
+.sdp-code-line .line-text {
+  color: #f1f5f9;
+}
+
+.sdp-ide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #11172a;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.sdp-ide-footer .status-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sdp-ide-footer .status-metrics {
+  display: flex;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   3. OVERVIEW & MISSION SECTION
+   ========================================================================== */
+.sdp-overview-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7f7 50%, #fdf2f4 100%);
+}
+
+.sdp-overview-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 56px 48px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+}
+
+.overview-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.sdp-overview-card h2 {
+  font-size: 2.2rem;
+  font-weight: 850;
+  color: #1a1a2e;
+  margin: 0 0 20px;
+}
+
+.sdp-overview-card p {
+  font-size: 1.1rem;
+  line-height: 1.85;
+  color: #555555;
+  margin-bottom: 40px;
+}
+
+.sdp-overview-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.highlight-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(249, 250, 251, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.highlight-box h4 {
+  font-size: 1rem;
+  color: #1a1a2e;
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.highlight-box p {
+  font-size: 0.88rem;
+  color: #555555;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. 3D CAPABILITIES MATRIX (FEATURES)
+   ========================================================================== */
+.sdp-features-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #fdf2f4 0%, #fcfbfe 50%, #ffffff 100%);
+}
+
+.sdp-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  perspective: 1000px;
+}
+
+.sdp-feature-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 36px 30px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sdp-feature-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 22px;
+}
+
+.sdp-feature-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.sdp-feature-num {
+  font-size: 2.2rem;
+  font-weight: 850;
+}
+
+.sdp-feature-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(157, 13, 18, 0.06);
+  color: #9d0d12;
+}
+
+.sdp-feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: #1a1a2e;
+  margin: 0 0 12px;
+}
+
+.sdp-feature-card p {
+  font-size: 0.94rem;
+  line-height: 1.7;
+  color: #555555;
+  margin: 0 0 24px;
+}
+
+.sdp-feature-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 16px;
+}
+
+.sdp-feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   5. CASE STUDIES SHOWCASE SECTION
+   ========================================================================== */
+.sdp-casestudies-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f7fd 50%, #ffffff 100%);
+}
+
+.sdp-casestudies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sdp-casestudy-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 32px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cs-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cs-category {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #9d0d12;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cs-metrics-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(157, 13, 18, 0.06);
+  border: 1px solid rgba(157, 13, 18, 0.15);
+}
+
+.sdp-casestudy-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.sdp-casestudy-card p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #555555;
+  margin: 0 0 20px;
+}
+
+.cs-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cs-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   6. INTERACTIVE COST & TIMELINE ESTIMATOR WIDGET
+   ========================================================================== */
+.sdp-estimator-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7f7 50%, #fef2f2 100%);
+}
+
+.sdp-estimator-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 48px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+}
+
+.sdp-estimator-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.sdp-est-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #9d0d12;
+  margin-bottom: 12px;
+}
+
+.sdp-estimator-header h2 {
+  font-size: 2.1rem;
+  font-weight: 850;
+  color: #1a1a2e;
+  margin: 0 0 10px;
+}
+
+.sdp-estimator-header p {
+  color: #555555;
+  font-size: 0.98rem;
+}
+
+.sdp-estimator-body {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+}
+
+.sdp-est-group {
+  margin-bottom: 28px;
+}
+
+.sdp-est-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+}
+
+.sdp-est-grid-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.sdp-est-type-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.sdp-est-type-chip.active {
+  background: rgba(157, 13, 18, 0.06);
+  border-color: #9d0d12;
+  color: #9d0d12;
+}
+
+.sdp-est-tabs-speed {
+  display: flex;
+  gap: 12px;
+}
+
+.sdp-speed-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sdp-speed-btn.active {
+  background: #ffffff;
+  border-color: #9d0d12;
+  color: #9d0d12;
+}
+
+.sdp-est-addons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.sdp-addon-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: 12.5px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.sdp-addon-chip .check-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.5px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estimator Result Box */
+.sdp-est-result-box {
+  background: linear-gradient(135deg, #fff7f7 0%, #fef2f2 100%);
+  border-radius: 22px;
+  padding: 32px;
+  border: 1px solid rgba(157, 13, 18, 0.15);
+  box-shadow: 0 10px 30px rgba(157, 13, 18, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #9d0d12;
+  letter-spacing: 1px;
+}
+
+.result-price {
+  margin: 20px 0 10px;
+}
+
+.result-price .price-label {
+  display: block;
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.result-price .price-val {
+  font-size: 2.7rem;
+  font-weight: 850;
+  line-height: 1;
+  color: #9d0d12;
+}
+
+.result-price .price-note {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.result-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+}
+
+.result-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.metric-row .m-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666666;
+}
+
+.metric-row .m-val {
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.sdp-est-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  transition: filter 0.2s ease;
+}
+
+.sdp-est-cta-btn:hover {
+  filter: brightness(1.15);
+}
+
+/* ==========================================================================
+   7. TECH STACK LOGO LOOP
+   ========================================================================== */
+.sdp-tech-section {
+  padding: var(--sdp-section-padding);
+  background: #ffffff;
+}
+
+.sdp-logo-marquee-wrapper {
+  padding: 20px 0;
+}
+
+/* ==========================================================================
+   8. AGILE DELIVERY PROCESS
+   ========================================================================== */
+.sdp-process-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.sdp-process-timeline-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sdp-process-step-v2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+}
+
+.step-num-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 850;
+  flex-shrink: 0;
+  background: rgba(157, 13, 18, 0.08);
+  color: #9d0d12;
+}
+
+.step-body h3 {
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: #1a1a2e;
+  margin: 0 0 6px;
+}
+
+.step-body p {
+  font-size: 0.92rem;
+  color: #555555;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   9. COMPARISON MATRIX TABLE
+   ========================================================================== */
+.sdp-comparison-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.sdp-comparison-table-wrapper {
+  overflow-x: auto;
+}
+
+.sdp-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.sdp-comparison-table th {
+  padding: 20px 24px;
+  text-align: left;
+  background: #f3f4f6;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.shri-brand-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shri-brand-head .pro-pill {
+  font-size: 10px;
+  font-weight: 850;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.sdp-comparison-table td {
+  padding: 18px 24px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 13.5px;
+}
+
+.td-feature {
+  color: #1a1a2e;
+  font-weight: 600;
+  width: 35%;
+}
+
+.td-shri {
+  background: rgba(157, 13, 18, 0.03);
+  color: #1a1a2e;
+  width: 35%;
+}
+
+.td-others {
+  color: #666666;
+  width: 30%;
+}
+
+/* ==========================================================================
+   10. TESTIMONIALS SHOWCASE
+   ========================================================================== */
+.sdp-testimonials-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #fff7f7 100%);
+}
+
+.sdp-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sdp-testimonial-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 32px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.testi-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.testi-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.testi-metric-badge {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.testi-quote {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin: 0 0 24px;
+  font-style: italic;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 850;
+}
+
+.author-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.author-role {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ==========================================================================
+   11. PRICING GRID V2
+   ========================================================================== */
+.sdp-pricing-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #fff7f7 0%, #ffffff 100%);
+}
+
+.sdp-pricing-sub {
+  color: #555555;
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.sdp-pricing-grid-v2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.sdp-pricing-card-v2 {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1.5px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.sdp-pricing-card-v2.highlighted {
+  border-width: 2px;
+  box-shadow: 0 16px 40px rgba(157, 13, 18, 0.12);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.5px;
+}
+
+.sdp-pricing-card-v2 h3 {
+  font-size: 1.3rem;
+  font-weight: 750;
+  color: #1a1a2e;
+  margin: 0 0 16px;
+}
+
+.pricing-amount-box {
+  margin-bottom: 28px;
+}
+
+.pricing-amount-box .amount {
+  font-size: 2.3rem;
+  font-weight: 850;
+  color: #1a1a2e;
+}
+
+.pricing-amount-box .period {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.plan-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  flex: 1;
+}
+
+.plan-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  color: #4b5563;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.plan-cta-btn {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  border-radius: 30px;
+  font-weight: 750;
+  font-size: 14px;
+  text-decoration: none;
+  border: 1.5px solid;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   12. FAQ WITH LIVE SEARCH
+   ========================================================================== */
+.sdp-faq-section {
+  padding: var(--sdp-section-padding);
+  background: linear-gradient(180deg, #ffffff 0%, #fcfbfe 100%);
+}
+
+.sdp-faq-search-box {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+
+.sdp-faq-search-box .search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.sdp-faq-search-box input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  border-radius: 30px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #1a1a2e;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.sdp-faq-list-v2 {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.sdp-faq-item {
+  background: #ffffff;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(157, 13, 18, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  position: relative;
+}
+
+.sdp-faq-accent-border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+.sdp-faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.sdp-faq-answer p {
+  padding: 0 24px 20px;
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: #555555;
+  margin: 0;
+}
+
+.no-faq-msg {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px;
+}
+
+/* ==========================================================================
+   13. CYBER CTA BANNER
+   ========================================================================== */
+.sdp-cyber-cta {
+  padding: var(--sdp-section-padding);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(105deg, #7b050d 0%, #c62828 50%, #ee5916 100%);
+  color: #ffffff;
+}
+
+.sdp-cyber-cta-content {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cta-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.sdp-cyber-cta-content h2 {
+  font-size: 2.5rem;
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+
+.sdp-cyber-cta-content p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.cta-actions-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  :root {
+    --sdp-section-padding: 56px 0;
+    --sdp-section-header-mb: 32px;
+  }
+
+  .sdp-hero {
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+    padding: 32px 0 28px;
+  }
+
+  .sdp-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .sdp-hero-tagline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sdp-hero-kpi-bar {
+    justify-content: center;
+  }
+
+  .sdp-hero-actions {
+    justify-content: center;
+  }
+
+  .sdp-features-grid,
+  .sdp-pricing-grid-v2,
+  .sdp-testimonials-grid,
+  .sdp-casestudies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sdp-estimator-body {
+    grid-template-columns: 1fr;
+  }
+
+  .sdp-overview-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sdp-section-padding: 44px 0;
+    --sdp-section-header-mb: 28px;
+  }
+
+  .sdp-hero-title {
+    font-size: 2.3rem;
+  }
+
+  .sdp-features-grid,
+  .sdp-pricing-grid-v2,
+  .sdp-testimonials-grid,
+  .sdp-casestudies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sdp-est-grid-types,
+  .sdp-est-addons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sdp-estimator-card,
+  .sdp-overview-card {
+    padding: 28px 20px;
+  }
+}
