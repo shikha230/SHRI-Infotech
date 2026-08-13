@@ -72,12 +72,13 @@
    ========================================================================== */
 .sdp-hero {
   position: relative;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 75px);
   min-height: 540px;
   max-height: 800px;
   display: flex;
   align-items: center;
   padding: 32px 0 28px;
+  margin-top: 50px;
   overflow: hidden;
   background: linear-gradient(135deg, #fff7f6 0%, #fef2f2 40%, #f8edf5 75%, #fff5f5 100%);
   box-sizing: border-box;
@@ -258,6 +259,9 @@
 }
 
 .sdp-btn-primary {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -266,11 +270,33 @@
   font-size: 15px;
   font-weight: 750;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s ease;
   box-shadow: 0 8px 25px rgba(157, 13, 18, 0.3);
 }
 
+.sdp-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0) 100%);
+  border-radius: inherit;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sdp-btn-primary:hover::before {
+  transform: translateY(0);
+}
+
 .sdp-btn-outline {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -282,21 +308,45 @@
   font-size: 15px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.sdp-btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #9d0d12 0%, #d91b22 100%);
+  border-radius: inherit;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -1;
 }
 
 .sdp-btn-outline:hover {
-  background: rgba(26, 26, 46, 0.06);
-  color: #1a1a2e;
-  border-color: #1a1a2e;
+  color: #ffffff;
+  border-color: #9d0d12;
+}
+
+.sdp-btn-outline:hover::before {
+  transform: translateY(0);
+}
+
+.sdp-cyber-cta .sdp-btn-outline {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.sdp-cyber-cta .sdp-btn-outline::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%);
 }
 
 .sdp-cyber-cta .sdp-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.15);
   color: #ffffff;
   border-color: #ffffff;
 }
-
 /* ==========================================================================
    2. INTERACTIVE CODE IDE SANDBOX (HERO RIGHT)
    ========================================================================== */

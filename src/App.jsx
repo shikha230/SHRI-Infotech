@@ -4,6 +4,7 @@ import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import './App.css'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 import TechnologyHeroSection from './components/TechnologyHeroSection'
+import Testimonials from './components/Testimonials'
 import logo from './assets/logo.jpeg'
 import whiteLogo from './assets/white-logo.png'
 import bannerVideo from './assets/bannervedio.mp4'
@@ -364,8 +365,8 @@ function HomePage() {
 
   const navLinks = [
     { name: "Home", link: "#services" },
+    { name: "About Us", link: "#about" },
     { name: "Services", link: "#services" },
-    { name: "Team", link: "#choose-us" },
     { name: "Contact", link: "#contact" },
   ];
 
@@ -664,6 +665,9 @@ function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* ===== CLIENT TESTIMONIALS SECTION ===== */}
+      <Testimonials accentColor="#9d0d12" />
 
       {/* ===== GET IN TOUCH SECTION ===== */}
       <section className="contact-section relative" id="contact">

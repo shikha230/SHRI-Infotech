@@ -19,8 +19,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", link: "/" },
+    { name: "About Us", link: getNavLink("#about") },
     { name: "Services", link: getNavLink("#services") },
-    { name: "Team", link: getNavLink("#choose-us") },
     { name: "Contact", link: getNavLink("#contact") },
   ]
 
