@@ -173,12 +173,15 @@
   justify-content: center;
 }
 
-/* Mobile menu dropdown */
+/* ===== MOBILE MENU ===== */
 .custom-mobile-menu {
   display: none;
-  background-color: #9d0d12;
   width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #9d0d12;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
   z-index: 999;
 }
 
@@ -188,11 +191,14 @@
   list-style: none;
   margin: 0;
   padding: 12px 20px 24px 20px;
+  background-color: #9d0d12;
 }
 
 .custom-mobile-menu li {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding: 12px 0;
+  margin: 0;
+  background-color: #9d0d12;
 }
 
 .custom-mobile-menu li a {
@@ -201,19 +207,7 @@
   font-size: 15px;
   font-weight: 500;
   display: block;
-}
-
-.custom-mobile-project-btn {
-  margin-top: 14px;
-  background-color: #ffffff;
-  color: #9d0d12;
-  padding: 12px;
-  border-radius: 30px;
-  font-weight: 600;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: transparent;
 }
 
 /* Breakpoint for Mobile Menu (approx lg: 1024px in Tailwind) */
@@ -232,12 +226,13 @@
 
   .custom-mobile-menu {
     display: block;
+    background-color: #9d0d12;
   }
 
   .custom-logo-area {
     width: 175px;
     padding-left: 14px;
-    padding-right: 0px;
+    padding-right: 0;
   }
 
   .custom-red-area {
@@ -265,10 +260,6 @@
     width: 50px;
   }
 
-  .navbar-projects-btn {
-    padding: 6px 14px !important;
-    font-size: 12.5px !important;
-  }
 }
 
 /* ===== HERO SECTION WITH VIDEO ===== */
@@ -2495,4 +2486,5 @@ html {
 
 .navbar-projects-btn:hover::before {
   transform: translateY(0);
-}
+}
+

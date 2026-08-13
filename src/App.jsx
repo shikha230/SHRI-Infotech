@@ -304,6 +304,64 @@ const ArrowIcon = ({ className = '' }) => (
 function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    service: "",
+    email: "",
+    project: "",
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    setFormMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormMessage("Enquiry submitted successfully!");
+
+        setFormData({
+          name: "",
+          phone: "",
+          service: "",
+          email: "",
+          project: "",
+        });
+      } else {
+        setFormMessage(data.message || "Failed to submit enquiry.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setFormMessage("Unable to connect to the server.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const navLinks = [
     { name: "Home", link: "#services" },
     { name: "Services", link: "#services" },
@@ -361,7 +419,7 @@ function HomePage() {
             {/* Project Button */}
             <a
               href="#projects"
-              className="navbar-projects-btn ml-auto inline-block px-7 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
+              className="navbar-projects-btn desktop-projects-btn ml-auto inline-block px-7 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
             >
               Projects
             </a>
@@ -410,15 +468,7 @@ function HomePage() {
                     </a>
                   </li>
                 ))}
-                <li className="pt-2">
-                  <a
-                    href="#projects"
-                    onClick={() => setIsOpen(false)}
-                    className="navbar-projects-btn block text-center px-6 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
-                  >
-                    Projects
-                  </a>
-                </li>
+                
               </ul>
             </motion.div>
           )}
@@ -672,44 +722,99 @@ function HomePage() {
             {/* Middle Column: Contact Form */}
             <ScrollReveal variant="fade-up" delay={0.15} duration={0.7}>
               <div className="contact-form-wrapper">
-                <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-                  <div className="form-row">
-                    <div className="form-group">
-                      <input type="text" placeholder="Full Name" required />
-                    </div>
-                    <div className="form-group">
-                      <input type="text" placeholder="Mobile Number" required />
-                    </div>
-                  </div>
-                  
-                  <div className="form-row">
-                    <div className="form-group">
-                      <select required defaultValue="">
-                        <option value="" disabled>Select Service</option>
-                        <option value="web-dev">Web Dev</option>
-                        <option value="app-dev">App Dev</option>
-                        <option value="wordpress">WordPress</option>
-                        <option value="shopify">Shopify</option>
-                        <option value="power-bi">Power BI</option>
-                        <option value="uiux">UI/UX Design</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
-                      <input type="email" placeholder="Email Address" required />
-                    </div>
-                  </div>
+                
 
-                  <div className="form-group full-width">
-                    <textarea placeholder="About Your Project" rows="5" required></textarea>
-                  </div>
+                 <form className="contact-form" onSubmit={handleSubmit}>
+  <div className="form-row">
+    <div className="form-group">
+      <input
+        type="text"
+        name="name"
+        placeholder="Full Name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+    </div>
 
-                  <button
-                      type="submit"
-                      className="submit-btn hero-btn-sweep-primary relative overflow-hidden cursor-pointer"
-                    >
-                      <span className="relative z-10">SUBMIT</span>
-                    </button>
-                </form>
+    <div className="form-group">
+      <input
+        type="text"
+        name="phone"
+        placeholder="Mobile Number"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+      />
+    </div>
+  </div>
+
+  <div className="form-row">
+    <div className="form-group">
+      <select
+        name="service"
+        value={formData.service}
+        onChange={handleChange}
+        required
+      >
+        <option value="" disabled>
+          Select Service
+        </option>
+
+        <option value="web-dev">Web Dev</option>
+        <option value="app-dev">App Dev</option>
+        <option value="wordpress">WordPress</option>
+        <option value="shopify">Shopify</option>
+        <option value="power-bi">Power BI</option>
+        <option value="uiux">UI/UX Design</option>
+      </select>
+    </div>
+
+    <div className="form-group">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+    </div>
+  </div>
+
+  <div className="form-group full-width">
+    <textarea
+      name="project"
+      placeholder="About Your Project"
+      rows="5"
+      value={formData.project}
+      onChange={handleChange}
+      required
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className="submit-btn hero-btn-sweep-primary relative overflow-hidden cursor-pointer"
+  >
+    <span className="relative z-10">
+      {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+    </span>
+  </button>
+
+  {formMessage && (
+    <p
+      style={{
+        marginTop: "15px",
+        textAlign: "center",
+        fontWeight: "500",
+      }}
+    >
+      {formMessage}
+    </p>
+  )}
+</form>
               </div>
             </ScrollReveal>
           </div>

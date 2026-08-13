@@ -113,30 +113,21 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.215, 0.61, 0.355, 1] }}
           >
-            <ul>
-              {navLinks.map((item, index) => (
-                <li key={index}>
-                  {item.link.startsWith('/') && !item.link.includes('#') ? (
-                    <Link to={item.link} onClick={() => setIsOpen(false)}>
-                      {item.name}
-                    </Link>
-                  ) : (
-                    <a href={item.link} onClick={() => setIsOpen(false)}>
-                      {item.name}
-                    </a>
-                  )}
-                </li>
-              ))}
-              <li className="pt-2">
-                <a
-                  href={getNavLink("#projects")}
-                  onClick={() => setIsOpen(false)}
-                  className="navbar-projects-btn block text-center px-6 py-2.5 rounded-full font-semibold text-[14.5px] no-underline leading-none shadow-sm cursor-pointer select-none"
-                >
-                  Projects
-                </a>
-              </li>
-            </ul>
+           <ul>
+  {navLinks.map((item, index) => (
+    <li key={index}>
+      {item.link.startsWith('/') && !item.link.includes('#') ? (
+        <Link to={item.link} onClick={() => setIsOpen(false)}>
+          {item.name}
+        </Link>
+      ) : (
+        <a href={item.link} onClick={() => setIsOpen(false)}>
+          {item.name}
+        </a>
+      )}
+    </li>
+  ))}
+</ul>
           </motion.div>
         )}
       </AnimatePresence>
