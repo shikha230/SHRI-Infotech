@@ -717,7 +717,7 @@ function HomePage() {
                     </svg>
                   </div>
                   <div className="contact-text">
-                    <span>1st floor of tek star park pashhupjya plaza 2nd floor office no:1, Vijay nagar, Patna</span>
+                    <span>3rd Floor, Toy & Joy Building, Near SBI Bank, Opp. Annapurna Dress, Near MIG Thana, Sector G, LIG Colony. Indore </span>
                   </div>
                 </motion.div>
               </div>
