@@ -1,51 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import {
   motion,
   AnimatePresence,
-  useScroll,
   useTransform,
   useMotionValue,
   useSpring,
-  useInView,
 } from 'framer-motion'
 import {
   Code2,
-  Cpu,
-  Zap,
+  Terminal,
+  Award,
   ShieldCheck,
-  Sparkles,
-  Globe,
-  Smartphone,
-  CheckCircle2,
-  XCircle,
+  Zap,
+  CheckCircle,
   ArrowRight,
   Search,
-  Calculator,
-  Sliders,
-  Layers,
-  Terminal,
-  ExternalLink,
-  Clock,
-  Lock,
-  Server,
-  Database,
-  TrendingUp,
-  MessageSquare,
-  Check,
-  Phone,
-  ChevronDown,
-  Play,
-  Award,
-  Activity,
-  FileText,
+  Globe,
+  Smartphone,
   BarChart3,
-  Monitor,
-  Layout,
-  CheckCircle,
-  Rocket,
-  Bot,
-  Flame,
+  Database,
+  Sparkles,
 } from 'lucide-react'
 import './ServiceDetailPage.css'
 import ScrollToTop from '../components/ScrollToTop'
@@ -60,7 +35,6 @@ import AnimatedCounter from '../components/AnimatedCounter'
    ANIMATION VARIANTS & SPRING CONFIGS
    ═══════════════════════════════════════════════ */
 
-const smoothSpring = { type: 'spring', stiffness: 120, damping: 20, mass: 0.8 }
 const bouncySpring = { type: 'spring', stiffness: 300, damping: 15, mass: 0.6 }
 
 const heroContainerVariants = {
@@ -384,78 +358,6 @@ function FeatureCard3D({ feature, idx, accentColor }) {
   )
 }
 
-/* ── Interactive Case Studies Showcase Section ── */
-function CaseStudiesShowcase({ accentColor }) {
-  const caseStudies = [
-    {
-      title: 'FinTech Global Pay Engine',
-      category: 'Fintech & SaaS Platform',
-      metrics: '₹500Cr+ Processed • 0ms Downtime',
-      description: 'Built a high-frequency payment dashboard processing over 50,000 concurrent transactions per minute with sub-20ms WebSocket API latency.',
-      tech: ['Next.js 15', 'TypeScript', 'GraphQL', 'Redis', 'AWS'],
-      gradient: 'linear-gradient(135deg, rgba(230, 57, 70, 0.18) 0%, rgba(157, 13, 18, 0.25) 100%)',
-    },
-    {
-      title: 'HealthTech AI Diagnostic Portal',
-      category: 'AI & Healthcare Web Portal',
-      metrics: '200+ Hospitals • 0.2s Search • HIPAA SLA',
-      description: 'Engineered a secure AI-assisted medical diagnostic web app allowing doctors to analyze medical scans with AI assistance in real-time.',
-      tech: ['React 19', 'FastAPI', 'Python', 'OpenAI', 'PostgreSQL'],
-      gradient: 'linear-gradient(135deg, rgba(220, 38, 38, 0.18) 0%, rgba(185, 28, 28, 0.25) 100%)',
-    },
-    {
-      title: 'OmniChannel E-Commerce Ecosystem',
-      category: 'Headless E-Commerce',
-      metrics: '+380% Conversions • 0.3s LCP Load',
-      description: 'Redesigned a global retail brand e-commerce store using Headless Next.js, Stripe Payments, and global Edge CDN routing.',
-      tech: ['Next.js', 'Shopify Storefront', 'Stripe', 'Tailwind', 'Vercel'],
-      gradient: 'linear-gradient(135deg, rgba(244, 63, 94, 0.18) 0%, rgba(157, 13, 18, 0.25) 100%)',
-    },
-  ]
-
-  return (
-    <section className="sdp-casestudies-section">
-      <div className="sdp-container">
-        <div className="sdp-section-header">
-          <span className="sdp-section-label" style={{ color: accentColor }}>
-            LIVE WORK HIGHLIGHTS
-          </span>
-          <h2>Proven Impact Across High-Growth Enterprises</h2>
-        </div>
-
-        <div className="sdp-casestudies-grid">
-          {caseStudies.map((cs, idx) => (
-            <motion.div
-              key={idx}
-              className="sdp-casestudy-card"
-              style={{ background: cs.gradient }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.12 }}
-              whileHover={{ y: -8 }}
-            >
-              <div className="cs-top-row">
-                <span className="cs-category">{cs.category}</span>
-                <span className="cs-metrics-pill" style={{ color: accentColor, borderColor: `${accentColor}50` }}>
-                  {cs.metrics}
-                </span>
-              </div>
-              <h3>{cs.title}</h3>
-              <p>{cs.description}</p>
-              <div className="cs-tech-tags">
-                {cs.tech.map((t, i) => (
-                  <span key={i} className="cs-tag">{t}</span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* ── FAQ Search Filter Component ── */
 function FAQItemWithSearch({ faq, idx, accentColor }) {
   const [open, setOpen] = useState(false)
@@ -765,7 +667,6 @@ const servicesData = {
 
 export default function ServiceDetailPage() {
   const { serviceId } = useParams()
-  const navigate = useNavigate()
   const service = servicesData[serviceId] || servicesData['web-dev']
 
   const [faqSearchQuery, setFaqSearchQuery] = useState('')
@@ -949,19 +850,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-         4. CASE STUDIES & LIVE WORK SHOWCASE
-         ═══════════════════════════════════════════════ */}
-      {/* {service.serviceKey === 'web-dev' && (
-        <CaseStudiesShowcase accentColor={service.accentColor} />
-      )} */}
-
-      {/* ═══════════════════════════════════════════════
-         5. INTERACTIVE PROJECT COST & TIMELINE ESTIMATOR
-         ═══════════════════════════════════════════════ */}
-     
-
-      {/* ═══════════════════════════════════════════════
-         6. TECH STACK MARQUEE & LOGO LOOP
+         4. TECH STACK MARQUEE & LOGO LOOP
          ═══════════════════════════════════════════════ */}
       <section className="sdp-tech-section">
         <div className="sdp-container">
@@ -993,7 +882,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-         7. 5-STEP AGILE DELIVERY PROCESS
+         5. 5-STEP AGILE DELIVERY PROCESS
          ═══════════════════════════════════════════════ */}
       <section className="sdp-process-section">
         <div className="sdp-container">
@@ -1028,77 +917,7 @@ export default function ServiceDetailPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-         8. COMPARISON MATRIX (SHRI INFOTECH VS OTHERS)
-         ═══════════════════════════════════════════════ */}
-
-      {/* ═══════════════════════════════════════════════
-         9. CLIENT TESTIMONIALS & REVIEWS
-         (Moved to Home page — no longer shown on Service pages)
-         ═══════════════════════════════════════════════ */}
-
-      {/* ═══════════════════════════════════════════════
-         10. PLANS & PRICING
-         ═══════════════════════════════════════════════ */}
-      {/* <section className="sdp-pricing-section" id="pricing">
-        <div className="sdp-container">
-          <div className="sdp-section-header">
-            <span className="sdp-section-label" style={{ color: service.accentColor }}>
-              TRANSPARENT PRICING
-            </span>
-            <h2>Select Your Growth Plan</h2>
-            <p className="sdp-pricing-sub">No hidden fees. Full source code & IP ownership included.</p>
-          </div>
-
-          <div className="sdp-pricing-grid-v2">
-            {service.pricing.map((plan, idx) => (
-              <motion.div
-                key={idx}
-                className={`sdp-pricing-card-v2 ${plan.highlighted ? 'highlighted' : ''}`}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: idx * 0.15 }}
-                whileHover={{ y: -10 }}
-                style={plan.highlighted ? { borderColor: service.accentColor } : {}}
-              >
-                {plan.highlighted && (
-                  <div className="popular-badge" style={{ background: service.accentColor, color: '#ffffff' }}>
-                    MOST POPULAR
-                  </div>
-                )}
-                <h3>{plan.plan}</h3>
-                <div className="pricing-amount-box">
-                  <span className="amount">{plan.price}</span>
-                  <span className="period">/{plan.period}</span>
-                </div>
-                <ul className="plan-features-list">
-                  {plan.features.map((feat, fIdx) => (
-                    <li key={fIdx}>
-                      <CheckCircle2 size={15} style={{ color: service.accentColor }} />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to="/#contact"
-                  className="plan-cta-btn"
-                  style={
-                    plan.highlighted
-                      ? { background: service.accentColor, color: '#ffffff' }
-                      : { borderColor: service.accentColor, color: service.accentColor }
-                  }
-                >
-                  Choose {plan.plan} Plan
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* ═══════════════════════════════════════════════
-         11. FREQUENTLY ASKED QUESTIONS (WITH LIVE SEARCH)
+         6. FREQUENTLY ASKED QUESTIONS (WITH LIVE SEARCH)
          ═══════════════════════════════════════════════ */}
       <section className="sdp-faq-section">
         <div className="sdp-container">
@@ -1136,43 +955,6 @@ export default function ServiceDetailPage() {
           </div>
         </div>
       </section>
-
-      {/* ═══════════════════════════════════════════════
-         12. HIGH-CONVERTING CYBER CTA BANNER
-         ═══════════════════════════════════════════════ */}
-      {/* <section className="sdp-cyber-cta">
-        <div className="sdp-container">
-          <motion.div
-            className="sdp-cyber-cta-content"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="cta-badge">
-              ⚡ START YOUR DIGITAL TRANSFORMATION
-            </span>
-            <h2>Ready To Build Your Next-Gen {service.title}?</h2>
-            <p>
-              Partner with Shri InfoTech today and get an enterprise-grade web application built for speed,
-              scale, and maximum ROI.
-            </p>
-
-            <div className="cta-actions-row">
-              <Link
-                to="/#contact"
-                className="sdp-btn-primary"
-                style={{ backgroundColor: '#ffffff', color: '#9d0d12' }}
-              >
-                Schedule Free Technical Strategy Call <ArrowRight size={16} />
-              </Link>
-              <a href="tel:+916200157201" className="sdp-btn-outline" style={{ borderColor: '#ffffff', color: '#ffffff' }}>
-                <Phone size={15} /> Call +91 62001 57201
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
 
       {/* ── Footer ── */}
       <Footer />

@@ -11,7 +11,6 @@ export default {
         background: "hsl(var(--background) / <alpha-value>)",
         foreground: "hsl(var(--foreground) / <alpha-value>)",
         primary: { DEFAULT: "hsl(var(--primary) / <alpha-value>)", foreground: "hsl(var(--primary-foreground) / <alpha-value>)" },
-        // ...baaki color definitions (secondary, muted, card etc.)
       },
       borderRadius: {
         lg: "var(--radius)",

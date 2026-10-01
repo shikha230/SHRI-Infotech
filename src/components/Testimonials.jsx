@@ -4,6 +4,77 @@ import { Star } from 'lucide-react'
 // Reuses the existing testimonial styles (sdp-testimonials-section, sdp-testimonial-card, etc.)
 import '../pages/ServiceDetailPage.css'
 
+/* ── Single Review Card with Expandable Text for Long Reviews ── */
+function TestimonialCard({ rev, accentColor }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const isLong = rev.quote.length > 160
+
+  const truncateText = (text, limit = 160) => {
+    if (text.length <= limit) return text
+    const lastSpace = text.lastIndexOf(' ', limit)
+    return (lastSpace > 0 ? text.slice(0, lastSpace) : text.slice(0, limit)).trim()
+  }
+
+  const quoteText = isLong && !isExpanded
+    ? `${truncateText(rev.quote, 160)}...`
+    : rev.quote
+
+  return (
+    <motion.div
+      className="sdp-testimonial-card h-full flex flex-col justify-between"
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.3 }}
+      style={{ minHeight: '290px' }}
+    >
+      <div>
+        <div className="testi-top">
+          <div className="testi-stars">
+            {[...Array(rev.rating || 5)].map((_, i) => (
+              <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
+            ))}
+          </div>
+        </div>
+        <p className="testi-quote" style={{ marginBottom: isLong ? '16px' : '24px' }}>
+          "{quoteText}"
+          {isLong && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                setIsExpanded(!isExpanded)
+              }}
+              className="read-more-btn ml-1.5 font-semibold text-xs transition-opacity hover:opacity-80 cursor-pointer inline-block border-0 bg-transparent p-0 underline"
+              style={{ color: accentColor }}
+            >
+              {isExpanded ? 'Read less' : 'Read more'}
+            </button>
+          )}
+        </p>
+      </div>
+
+      <div className="testi-author">
+        <div
+          className="author-avatar"
+          style={{ background: accentColor, color: '#ffffff' }}
+        >
+          {rev.name.charAt(0)}
+        </div>
+        <div className="author-info">
+          <span className="author-name">
+            {rev.name}
+            {rev.country && (
+              <span style={{ fontWeight: 400, color: '#888888', fontSize: '0.85em', marginLeft: '6px' }}>
+                | {rev.country}
+              </span>
+            )}
+          </span>
+          <span className="author-role">{rev.role}</span>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 /* ── Client Testimonials Showcase (shared: used on Home + previously on Service pages) ── */
 export default function Testimonials({ accentColor = '#9d0d12' }) {
   const [isPaused, setIsPaused] = useState(false)
@@ -156,42 +227,7 @@ export default function Testimonials({ accentColor = '#9d0d12' }) {
               key={`${rev.name}-${idx}`}
               className="w-[320px] sm:w-[360px] md:w-[420px] flex-none py-2"
             >
-              <motion.div
-                className="sdp-testimonial-card h-full flex flex-col justify-between"
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div>
-                  <div className="testi-top">
-                    <div className="testi-stars">
-                      {[...Array(rev.rating || 5)].map((_, i) => (
-                        <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
-                      ))}
-                    </div>
-                  </div>
-                  <p className="testi-quote">"{rev.quote}"</p>
-                </div>
-
-                <div className="testi-author">
-                  <div
-                    className="author-avatar"
-                    style={{ background: accentColor, color: '#ffffff' }}
-                  >
-                    {rev.name.charAt(0)}
-                  </div>
-                  <div className="author-info">
-                    <span className="author-name">
-                      {rev.name}
-                      {rev.country && (
-                        <span style={{ fontWeight: 400, color: '#888888', fontSize: '0.85em', marginLeft: '6px' }}>
-                          | {rev.country}
-                        </span>
-                      )}
-                    </span>
-                    <span className="author-role">{rev.role}</span>
-                  </div>
-                </div>
-              </motion.div>
+              <TestimonialCard rev={rev} accentColor={accentColor} />
             </div>
           ))}
         </div>
